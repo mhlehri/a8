@@ -28,6 +28,17 @@ const readBookById = async (bookId: string) => {
 };
 
 const updateBook = async (bookId: string, data: Partial<Book>) => {
+
+  const isExits = await prisma.book.findUnique({
+    where: {
+      bookId,
+    },
+  });
+
+  if (!isExits) {
+    throw new AppError(404, "Book doesn't exits");
+  }
+
   const r = await prisma.book.update({
     where: {
       bookId,
