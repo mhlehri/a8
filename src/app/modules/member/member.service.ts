@@ -26,7 +26,16 @@ const readMemberById = async (memberId: string) => {
   return r;
 };
 
-const updateMember = async () => {};
+const updateMember = async (memberId: string, data: Member) => {
+  const r = await prisma.member.update({
+    where: {
+      memberId,
+    },
+    data,
+  });
+
+  return r;
+};
 const deleteMember = async () => {};
 
 export const memberService = {
