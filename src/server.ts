@@ -1,15 +1,24 @@
-import express from "express";
-import cors from "cors";
+import { Server } from "http";
+import app from "./app";
 
-const app = express();
-app.use(cors());
-app.use(express.json());
 const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+async function main() {
+  const server: Server = app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+  });
+  server.on("error", (error) => {
+    console.error("Error starting server:", error);
+  });
+  server.on("close", () => {
+    console.log("Server closed");
+  });
+  server.on("request", (req, res) => {
+    console.log("New request:", req.method, req.url);
+  });
+  server.on("upgrade", (req, socket, head) => {
+    console.log("WebSocket upgrade request:", req.url);
+  });
+}
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+main();
