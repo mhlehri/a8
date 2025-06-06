@@ -1,4 +1,4 @@
-export type TBook = {
+export type TMember = {
   name: String;
   email: String;
   phone: Number;
