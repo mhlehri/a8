@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { memberController } from "./borrowReturn.controller";
+import { borrowReturnController } from "./borrowReturn.controller";
 
 const borrowReturnRouter = Router();
 
-borrowReturnRouter.post("/borrow", memberController.readAllMembers);
-borrowReturnRouter.post("/return", memberController.readMemberById);
+borrowReturnRouter.post("/borrow", borrowReturnController.borrowABook);
+borrowReturnRouter.post("/return", borrowReturnController.returnABook);
 
 
 export default borrowReturnRouter;
