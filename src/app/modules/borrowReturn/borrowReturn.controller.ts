@@ -25,6 +25,7 @@ const borrowABook = CatchAsync(async (req, res) => {
     data: resultData,
   });
 });
+
 const returnABook = CatchAsync(async (req, res) => {
   const result = await borrowReturnService.returnABook(req.body);
 
