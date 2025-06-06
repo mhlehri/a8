@@ -6,6 +6,7 @@ import { bookService } from "./book.service";
 const createBook = CatchAsync(async (req, res) => {
   // console.log(req.body);
   const result = await bookService.createBook(req.body);
+
   sendResponse(res, {
     success: true,
     status: 201,
@@ -16,6 +17,7 @@ const createBook = CatchAsync(async (req, res) => {
 
 const readAllBooks = CatchAsync(async (_req, res) => {
   const result = await bookService.readAllBooks();
+
   sendResponse(res, {
     success: true,
     status: 200,
@@ -51,7 +53,17 @@ const updateBook = CatchAsync(async (req, res) => {
     data: result,
   });
 });
-const deleteBook = CatchAsync(() => {});
+
+const deleteBook = CatchAsync(async (req, res) => {
+  const { bookId } = req.params;
+  const result = await bookService.deleteBook(bookId);
+
+  sendResponse(res, {
+    success: true,
+    status: 200,
+    message: "Book successfully deleted",
+  });
+});
 
 export const bookController = {
   createBook,
