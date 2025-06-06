@@ -2,6 +2,12 @@ import CatchAsync from "../../../helper/CatchAsync";
 import sendResponse from "../../../helper/sendRespose";
 import { borrowReturnService } from "./borrowReturn.service";
 
+/**
+ * Borrow Return Controller
+ * Handles all HTTP requests related to book borrowing and returning operations
+ */
+
+// Process book borrowing request
 const borrowABook = CatchAsync(async (req, res) => {
   const result = await borrowReturnService.borrowABook(req.body);
 
@@ -26,6 +32,7 @@ const borrowABook = CatchAsync(async (req, res) => {
   });
 });
 
+// Process book return request
 const returnABook = CatchAsync(async (req, res) => {
   const result = await borrowReturnService.returnABook(req.body);
 
@@ -36,6 +43,7 @@ const returnABook = CatchAsync(async (req, res) => {
   });
 });
 
+// Retrieve list of overdue borrowed books
 const borrowOverdueList = CatchAsync(async (req, res) => {
   const result = await borrowReturnService.borrowOverdueList();
 

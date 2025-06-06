@@ -2,6 +2,12 @@ import { Member } from "../../../generated/prisma";
 import AppError from "../../../helper/AppError";
 import prisma from "../../../shared/prisma";
 
+/**
+ * Member Service
+ * Contains business logic for member management operations
+ */
+
+// Create a new member record in the database
 const createMember = async (data: Member) => {
   console.log(data);
   const r = await prisma.member.create({
@@ -11,12 +17,14 @@ const createMember = async (data: Member) => {
   return r;
 };
 
+// Retrieve all members from the database
 const readAllMembers = async () => {
   const r = await prisma.member.findMany();
 
   return r;
 };
 
+// Find a specific member by their ID
 const readMemberById = async (memberId: string) => {
   const r = await prisma.member.findUnique({
     where: {
@@ -27,7 +35,9 @@ const readMemberById = async (memberId: string) => {
   return r;
 };
 
+// Update member information with validation
 const updateMember = async (memberId: string, data: Member) => {
+  // Check if member exists before updating
   const isExits = await prisma.member.findUnique({
     where: {
       memberId,
@@ -47,7 +57,10 @@ const updateMember = async (memberId: string, data: Member) => {
 
   return r;
 };
+
+// Delete a member with existence validation
 const deleteMember = async (memberId: string) => {
+  // Verify member exists before deletion
   const isExits = await prisma.member.findUnique({
     where: {
       memberId,

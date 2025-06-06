@@ -2,7 +2,14 @@ import { BorrowRecord } from "../../../generated/prisma";
 import AppError from "../../../helper/AppError";
 import prisma from "../../../shared/prisma";
 
+/**
+ * Borrow Return Service
+ * Contains business logic for book borrowing and returning operations
+ */
+
+// Process book borrowing with validation
 const borrowABook = async (data: BorrowRecord) => {
+  // Validate book existence
   const isBookExits = await prisma.book.findUnique({
     where: {
       bookId: data.bookId,
@@ -13,6 +20,7 @@ const borrowABook = async (data: BorrowRecord) => {
     throw new AppError(404, "Book doesn't exits");
   }
 
+  // Validate member existence
   const isMemberExits = await prisma.member.findUnique({
     where: {
       memberId: data.memberId,
@@ -23,6 +31,7 @@ const borrowABook = async (data: BorrowRecord) => {
     throw new AppError(404, "Member doesn't exits");
   }
 
+  // Create borrow record
   const r = await prisma.borrowRecord.create({
     data,
   });
@@ -30,7 +39,9 @@ const borrowABook = async (data: BorrowRecord) => {
   return r;
 };
 
+// Process book return with validation
 const returnABook = async (data: BorrowRecord) => {
+  // Validate borrow record existence
   const isBorrowExits = await prisma.borrowRecord.findUnique({
     where: {
       borrowId: data.borrowId,
@@ -42,10 +53,13 @@ const returnABook = async (data: BorrowRecord) => {
   }
 };
 
+// Retrieve overdue books list with calculated overdue days
 const borrowOverdueList = async () => {
+  // Define maximum borrow time (14 days)
   const maxBorrowTime = 14 * 24 * 60 * 60 * 1000; // 14 days in milliseconds
   const overdueDate = new Date(Date.now() - maxBorrowTime);
 
+  // Find all overdue borrow records
   const overdueRecords = await prisma.borrowRecord.findMany({
     where: {
       borrowDate: {
@@ -68,6 +82,7 @@ const borrowOverdueList = async () => {
     },
   });
 
+  // Format overdue records with calculated overdue days
   const overdueList = overdueRecords.map((record) => {
     const currentDate = new Date();
     const borrowDate = new Date(record.borrowDate);

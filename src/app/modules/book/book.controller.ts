@@ -3,6 +3,12 @@ import CatchAsync from "../../../helper/CatchAsync";
 import sendResponse from "../../../helper/sendRespose";
 import { bookService } from "./book.service";
 
+/**
+ * Book Controller
+ * Handles all HTTP requests related to book management operations
+ */
+
+// Create a new book in the library system
 const createBook = CatchAsync(async (req, res) => {
   const result = await bookService.createBook(req.body);
 
@@ -14,6 +20,7 @@ const createBook = CatchAsync(async (req, res) => {
   });
 });
 
+// Retrieve all books from the library
 const readAllBooks = CatchAsync(async (_req, res) => {
   const result = await bookService.readAllBooks();
 
@@ -26,6 +33,7 @@ const readAllBooks = CatchAsync(async (_req, res) => {
   });
 });
 
+// Retrieve a specific book by its ID
 const readBookById = CatchAsync(async (req, res) => {
   const { bookId } = req.params;
   const result = await bookService.readBookById(bookId);
@@ -42,6 +50,7 @@ const readBookById = CatchAsync(async (req, res) => {
   });
 });
 
+// Update an existing book's information
 const updateBook = CatchAsync(async (req, res) => {
   const { bookId } = req.params;
   const result = await bookService.updateBook(bookId, req.body);
@@ -54,6 +63,7 @@ const updateBook = CatchAsync(async (req, res) => {
   });
 });
 
+// Delete a book from the library system
 const deleteBook = CatchAsync(async (req, res) => {
   const { bookId } = req.params;
   await bookService.deleteBook(bookId);

@@ -3,6 +3,12 @@ import CatchAsync from "../../../helper/CatchAsync";
 import sendResponse from "../../../helper/sendRespose";
 import { memberService } from "./member.service";
 
+/**
+ * Member Controller
+ * Handles all HTTP requests related to member management operations
+ */
+
+// Register a new member in the library system
 const createMember = CatchAsync(async (req, res) => {
   const result = await memberService.createMember(req.body);
 
@@ -14,6 +20,7 @@ const createMember = CatchAsync(async (req, res) => {
   });
 });
 
+// Retrieve all registered members
 const readAllMembers = CatchAsync(async (_req, res) => {
   const result = await memberService.readAllMembers();
 
@@ -26,6 +33,7 @@ const readAllMembers = CatchAsync(async (_req, res) => {
   });
 });
 
+// Retrieve a specific member by their ID
 const readMemberById = CatchAsync(async (req, res) => {
   const { memberId } = req.params;
   const result = await memberService.readMemberById(memberId);
@@ -42,6 +50,7 @@ const readMemberById = CatchAsync(async (req, res) => {
   });
 });
 
+// Update an existing member's information
 const updateMember = CatchAsync(async (req, res) => {
   const { memberId } = req.params;
   const result = await memberService.updateMember(memberId, req.body);
@@ -54,6 +63,7 @@ const updateMember = CatchAsync(async (req, res) => {
   });
 });
 
+// Remove a member from the library system
 const deleteMember = CatchAsync(async (req, res) => {
   const { memberId } = req.params;
   await memberService.deleteMember(memberId);
