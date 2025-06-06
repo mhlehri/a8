@@ -1,13 +1,13 @@
-const createMember = () => {};
-const readAllMembers = () => {};
-const readMemberById = () => {};
-const updateMember = () => {};
-const deleteMember = () => {};
+const createBorrowReturn = () => {};
+const readAllBorrowReturns = () => {};
+const readBorrowReturnById = () => {};
+const updateBorrowReturn = () => {};
+const deleteBorrowReturn = () => {};
 
-export const memberController = {
-  createMember,
-  readAllMembers,
-  readMemberById,
-  updateMember,
-  deleteMember,
+export const borrowReturnController = {
+  createBorrowReturn,
+  readAllBorrowReturns,
+  readBorrowReturnById,
+  updateBorrowReturn,
+  deleteBorrowReturn,
 };
