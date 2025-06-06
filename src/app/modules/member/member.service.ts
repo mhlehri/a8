@@ -9,7 +9,6 @@ import prisma from "../../../shared/prisma";
 
 // Create a new member record in the database
 const createMember = async (data: Member) => {
-  console.log(data);
   const r = await prisma.member.create({
     data,
   });
