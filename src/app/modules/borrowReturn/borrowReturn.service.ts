@@ -1,13 +1,7 @@
-const createMember = () => {};
-const readAllMembers = () => {};
-const readMemberById = () => {};
-const updateMember = () => {};
-const deleteMember = () => {};
+const borrowABook = () => {};
+const returnABook = () => {};
 
-export const memberService = {
-  createMember,
-  readAllMembers,
-  readMemberById,
-  updateMember,
-  deleteMember,
+export const borrowReturnService = {
+  borrowABook,
+  returnABook,
 };
