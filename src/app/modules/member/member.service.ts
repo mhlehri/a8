@@ -1,4 +1,5 @@
 import { Member } from "../../../generated/prisma";
+import AppError from "../../../helper/AppError";
 import prisma from "../../../shared/prisma";
 
 const createMember = async (data: Member) => {
@@ -27,6 +28,16 @@ const readMemberById = async (memberId: string) => {
 };
 
 const updateMember = async (memberId: string, data: Member) => {
+  const isExits = await prisma.member.findUnique({
+    where: {
+      memberId,
+    },
+  });
+
+  if (!isExits) {
+    throw new AppError(404, "Member doesn't exits");
+  }
+
   const r = await prisma.member.update({
     where: {
       memberId,
