@@ -10,7 +10,7 @@ const routes = [
     router: bookRouter,
   },
   {
-    path: "/member",
+    path: "/members",
     router: memberRouter,
   },
 ];

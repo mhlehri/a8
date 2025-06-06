@@ -2,6 +2,7 @@ import { Member } from "../../../generated/prisma";
 import prisma from "../../../shared/prisma";
 
 const createMember = async (data: Member) => {
+  console.log(data);
   const r = await prisma.member.create({
     data,
   });
@@ -9,15 +10,15 @@ const createMember = async (data: Member) => {
   return r;
 };
 
-const readAllBooks = async () => {
-  const r = await prisma.book.findMany();
+const readAllMembers = async () => {
+  const r = await prisma.member.findMany();
 
   return r;
 };
-const readAllMembers = () => {};
-const readMemberById = () => {};
-const updateMember = () => {};
-const deleteMember = () => {};
+
+const readMemberById = async () => {};
+const updateMember = async () => {};
+const deleteMember = async () => {};
 
 export const memberService = {
   createMember,
