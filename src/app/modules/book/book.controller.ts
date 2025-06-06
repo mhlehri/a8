@@ -40,7 +40,17 @@ const readBookById = CatchAsync(async (req, res) => {
   });
 });
 
-const updateBook = CatchAsync(() => {});
+const updateBook = CatchAsync(async (req, res) => {
+  const { bookId } = req.params;
+  const result = await bookService.updateBook(bookId, req.body);
+
+  sendResponse(res, {
+    success: true,
+    status: 200,
+    message: "Book updated successfully",
+    data: result,
+  });
+});
 const deleteBook = CatchAsync(() => {});
 
 export const bookController = {
