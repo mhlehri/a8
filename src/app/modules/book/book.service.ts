@@ -2,9 +2,9 @@ import { Book } from "../../../generated/prisma";
 import prisma from "../../../shared/prisma";
 
 const createBook = async (data: Book) => {
-  console.log(data);
+  // console.log(data);
   const r = await prisma.book.create({
-    data: data,
+    data,
   });
 
   return r;

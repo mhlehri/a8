@@ -6,7 +6,7 @@ const appRouter = Router();
 
 const routes = [
   {
-    path: "/book",
+    path: "/books",
     router: bookRouter,
   },
   {
