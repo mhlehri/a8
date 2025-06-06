@@ -13,10 +13,21 @@ const createMember = CatchAsync(async (req, res) => {
   });
 });
 
-const readAllMembers = () => {};
-const readMemberById = () => {};
-const updateMember = () => {};
-const deleteMember = () => {};
+const readAllMembers = CatchAsync(async (_req, res) => {
+  const result = await memberService.readAllMembers();
+
+  sendResponse(res, {
+    success: true,
+    status: 200,
+    message:
+      result.length > 0 ? "Members retrieved successfully" : "No Members found",
+    data: result || [],
+  });
+});
+
+const readMemberById = CatchAsync(async (req, res) => {});
+const updateMember = CatchAsync(async (req, res) => {});
+const deleteMember = CatchAsync(async (req, res) => {});
 
 export const memberController = {
   createMember,
