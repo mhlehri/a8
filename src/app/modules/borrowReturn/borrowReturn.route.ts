@@ -1,12 +1,9 @@
 import { Router } from "express";
 import { memberController } from "./borrowReturn.controller";
 
-const memberRouter = Router();
+const borrowReturnRouter = Router();
 
-memberRouter.get("/", memberController.readAllMembers);
-memberRouter.get("/:id", memberController.readMemberById);
-memberRouter.post("/", memberController.createMember);
-memberRouter.patch("/", memberController.updateMember);
-memberRouter.delete("/", memberController.deleteMember);
+borrowReturnRouter.post("/borrow", memberController.readAllMembers);
+borrowReturnRouter.post("/return", memberController.readMemberById);
 
-export default memberRouter;
+export default borrowReturnRouter;
