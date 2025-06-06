@@ -1,7 +1,6 @@
 export type TBook = {
-  title: String;
-  genre: String;
-  publishedYear: Number;
-  totalCopies: Number;
-  availableCopies: Number;
+  name: String;
+  email: String;
+  phone: Number;
+  membershipDate: Date;
 };
