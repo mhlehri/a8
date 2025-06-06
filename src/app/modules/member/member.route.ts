@@ -1,12 +1,12 @@
 import { Router } from "express";
 import { memberController } from "./member.controller";
 
-const bookRouter = Router();
+const memberRouter = Router();
 
-bookRouter.get("/", memberController.readAllMembers);
-bookRouter.get("/:id", memberController.readMemberById);
-bookRouter.post("/", memberController.createMember);
-bookRouter.patch("/", memberController.updateMember);
-bookRouter.delete("/", memberController.deleteMember);
+memberRouter.get("/", memberController.readAllMembers);
+memberRouter.get("/:id", memberController.readMemberById);
+memberRouter.post("/", memberController.createMember);
+memberRouter.patch("/", memberController.updateMember);
+memberRouter.delete("/", memberController.deleteMember);
 
-export default bookRouter;
+export default memberRouter;
