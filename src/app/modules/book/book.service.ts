@@ -16,7 +16,15 @@ const readAllBooks = async () => {
   return r;
 };
 
-const readBookById = async () => {};
+const readBookById = async (id: string) => {
+  const r = await prisma.book.findUniqueOrThrow({
+    where: {
+      bookId: id,
+    },
+  });
+
+  return r;
+};
 const updateBook = async () => {};
 const deleteBook = async () => {};
 
