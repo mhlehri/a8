@@ -2,11 +2,15 @@
   "name": "assignment-8",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts",
+    "build": "prisma generate && tsc --outDir dist",
+    "start": "node dist/server.js",
     "prod": "NODE_ENV=production node ./dist/server.js",
-    "build": "tsc && npx prisma generate"
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate && prisma migrate deploy && tsc --outDir dist"
   },
   "keywords": [],
   "author": "",
