@@ -21,7 +21,8 @@ const readAllBooks = CatchAsync(async (_req, res) => {
   sendResponse(res, {
     success: true,
     status: 200,
-    message: "Books retrieved successfully",
+    message:
+      result.length > 0 ? "Books retrieved successfully" : "No Books found",
     data: result || [],
   });
 });
