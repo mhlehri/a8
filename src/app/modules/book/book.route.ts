@@ -4,9 +4,9 @@ import { bookController } from "./book.controller";
 const bookRouter = Router();
 
 bookRouter.get("/", bookController.readAllBooks);
-bookRouter.get("/:id", bookController.readBookById);
+bookRouter.get("/:bookId", bookController.readBookById);
 bookRouter.post("/", bookController.createBook);
-bookRouter.patch("/:id", bookController.updateBook);
+bookRouter.patch("/:bookId", bookController.updateBook);
 bookRouter.delete("/", bookController.deleteBook);
 
 export default bookRouter;
