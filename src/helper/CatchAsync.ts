@@ -9,3 +9,5 @@ const CatchAsync = (
 };
 
 export default CatchAsync;
+
+// higher order function

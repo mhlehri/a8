@@ -3,7 +3,8 @@ import { Response } from "express";
 const sendResponse = <T>(
   res: Response,
   jsonData: {
-    statusCode: number;
+    success: boolean;
+    status: number;
     message: string;
     meta?: {
       page?: number;
@@ -14,6 +15,6 @@ const sendResponse = <T>(
     error?: Error | string | null | undefined;
   }
 ) => {
-  res.status(jsonData.statusCode).json(jsonData);
+  res.status(jsonData.status).json(jsonData);
 };
 export default sendResponse;
