@@ -12,8 +12,16 @@ const createBook = CatchAsync(async (req, res) => {
     data: result,
   });
 });
-const readAllBooks = CatchAsync(() => {
-  console.log("reading all books");
+
+
+const readAllBooks = CatchAsync(async (_req, res) => {
+  const result = await bookService.readAllBooks();
+  sendResponse(res, {
+    success: true,
+    status: 200,
+    message: "Books retrieved successfully",
+    data: result,
+  });
 });
 const readBookById = CatchAsync(() => {});
 const updateBook = CatchAsync(() => {});
