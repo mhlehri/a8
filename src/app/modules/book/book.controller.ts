@@ -1,3 +1,4 @@
+import AppError from "../../../helper/AppError";
 import CatchAsync from "../../../helper/CatchAsync";
 import sendResponse from "../../../helper/sendRespose";
 import { bookService } from "./book.service";
@@ -13,7 +14,6 @@ const createBook = CatchAsync(async (req, res) => {
   });
 });
 
-
 const readAllBooks = CatchAsync(async (_req, res) => {
   const result = await bookService.readAllBooks();
   sendResponse(res, {
@@ -27,6 +27,10 @@ const readAllBooks = CatchAsync(async (_req, res) => {
 const readBookById = CatchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await bookService.readBookById(id);
+
+  if (!result) {
+    throw new AppError(404, "Book not found");
+  }
 
   sendResponse(res, {
     success: true,
