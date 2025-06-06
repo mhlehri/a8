@@ -23,10 +23,18 @@ const readBookById = async (id: string) => {
     },
   });
 
-
   return r;
 };
-const updateBook = async () => {};
+
+const updateBook = async (bookId: string, data: Partial<Book>) => {
+  const r = await prisma.book.update({
+    where: {
+      bookId,
+    },
+    data,
+  });
+};
+
 const deleteBook = async () => {};
 
 export const bookService = {
