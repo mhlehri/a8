@@ -3,7 +3,6 @@ import AppError from "../../../helper/AppError";
 import prisma from "../../../shared/prisma";
 
 const createBook = async (data: Book) => {
-  // console.log(data);
   const r = await prisma.book.create({
     data,
   });

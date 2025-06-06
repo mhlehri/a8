@@ -4,7 +4,6 @@ import sendResponse from "../../../helper/sendRespose";
 import { bookService } from "./book.service";
 
 const createBook = CatchAsync(async (req, res) => {
-  // console.log(req.body);
   const result = await bookService.createBook(req.body);
 
   sendResponse(res, {
