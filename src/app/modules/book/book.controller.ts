@@ -20,7 +20,7 @@ const readAllBooks = CatchAsync(async (_req, res) => {
     success: true,
     status: 200,
     message: "Books retrieved successfully",
-    data: result,
+    data: result || [],
   });
 });
 
