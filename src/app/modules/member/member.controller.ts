@@ -1,13 +1,13 @@
-const createBook = () => {};
-const readAllBooks = () => {};
-const readBookById = () => {};
-const updateBook = () => {};
-const deleteBook = () => {};
+const createMember = () => {};
+const readAllMembers = () => {};
+const readMemberById = () => {};
+const updateMember = () => {};
+const deleteMember = () => {};
 
-export const bookController = {
-  createBook,
-  readAllBooks,
-  readBookById,
-  updateBook,
-  deleteBook,
+export const memberController = {
+  createMember,
+  readAllMembers,
+  readMemberById,
+  updateMember,
+  deleteMember,
 };

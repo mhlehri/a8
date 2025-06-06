@@ -1,13 +1,13 @@
-const createBook = () => {};
-const readAllBooks = () => {};
-const readBookById = () => {};
-const updateBook = () => {};
-const deleteBook = () => {};
+const createMember = () => {};
+const readAllMembers = () => {};
+const readMemberById = () => {};
+const updateMember = () => {};
+const deleteMember = () => {};
 
-export const bookService = {
-  createBook,
-  readAllBooks,
-  readBookById,
-  updateBook,
-  deleteBook,
+export const memberService = {
+  createMember,
+  readAllMembers,
+  readMemberById,
+  updateMember,
+  deleteMember,
 };
