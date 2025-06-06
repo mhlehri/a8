@@ -1,4 +1,14 @@
-const createBook = () => {};
+import { Book } from "../../../generated/prisma";
+import prisma from "../../../shared/prisma";
+
+const createBook = async (data: Book) => {
+  console.log(data);
+  const r = await prisma.book.create({
+    data: data,
+  });
+
+  return r;
+};
 const readAllBooks = () => {};
 const readBookById = () => {};
 const updateBook = () => {};
