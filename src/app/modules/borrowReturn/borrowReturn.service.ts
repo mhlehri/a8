@@ -3,7 +3,6 @@ import AppError from "../../../helper/AppError";
 import prisma from "../../../shared/prisma";
 
 const borrowABook = async (data: BorrowRecord) => {
-  console.log(data);
   const isBookExits = await prisma.book.findUnique({
     where: {
       bookId: data.bookId,
@@ -30,7 +29,18 @@ const borrowABook = async (data: BorrowRecord) => {
 
   return r;
 };
-const returnABook = async () => {};
+
+const returnABook = async (data: BorrowRecord) => {
+  const isBorrowExits = await prisma.borrowRecord.findUnique({
+    where: {
+      borrowId: data.borrowId,
+    },
+  });
+
+  if (!isBorrowExits) {
+    throw new AppError(404, "Borrow record not found");
+  }
+};
 
 export const borrowReturnService = {
   borrowABook,
