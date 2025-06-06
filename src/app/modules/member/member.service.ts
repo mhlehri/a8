@@ -47,7 +47,25 @@ const updateMember = async (memberId: string, data: Member) => {
 
   return r;
 };
-const deleteMember = async () => {};
+const deleteMember = async (memberId: string) => {
+  const isExits = await prisma.member.findUnique({
+    where: {
+      memberId,
+    },
+  });
+
+  if (!isExits) {
+    throw new AppError(404, "Member doesn't exits");
+  }
+
+  const r = await prisma.member.delete({
+    where: {
+      memberId,
+    },
+  });
+
+  return r;
+};
 
 export const memberService = {
   createMember,
