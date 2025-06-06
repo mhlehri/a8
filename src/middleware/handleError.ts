@@ -1,5 +1,5 @@
-import { NextFunction, Request, RequestHandler, Response } from "express";
-import { PrismaClientKnownRequestError } from "../generated/prisma/runtime/library";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+import { NextFunction, Request, Response } from "express";
 
 const handleError = (
   err: Error & PrismaClientKnownRequestError & { status?: number },
