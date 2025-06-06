@@ -16,7 +16,16 @@ const readAllMembers = async () => {
   return r;
 };
 
-const readMemberById = async () => {};
+const readMemberById = async (memberId: string) => {
+  const r = await prisma.member.findUnique({
+    where: {
+      memberId,
+    },
+  });
+
+  return r;
+};
+
 const updateMember = async () => {};
 const deleteMember = async () => {};
 
