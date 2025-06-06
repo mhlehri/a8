@@ -36,7 +36,10 @@ const returnABook = CatchAsync(async (req, res) => {
   });
 });
 
+const borrowOverdueList = CatchAsync(async (req, res) => {});
+
 export const borrowReturnController = {
   borrowABook,
   returnABook,
+  borrowOverdueList,
 };
