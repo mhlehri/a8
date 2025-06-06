@@ -33,6 +33,8 @@ const updateBook = async (bookId: string, data: Partial<Book>) => {
     },
     data,
   });
+
+  return r;
 };
 
 const deleteBook = async () => {};
