@@ -41,7 +41,18 @@ const readMemberById = CatchAsync(async (req, res) => {
     data: result,
   });
 });
-const updateMember = CatchAsync(async (req, res) => {});
+
+const updateMember = CatchAsync(async (req, res) => {
+  const { memberId } = req.params;
+  const result = await memberService.updateMember(memberId, req.body);
+
+  sendResponse(res, {
+    success: true,
+    status: 200,
+    message: "Member updated successfully",
+    data: result,
+  });
+});
 const deleteMember = CatchAsync(async (req, res) => {});
 
 export const memberController = {
