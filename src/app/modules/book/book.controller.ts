@@ -23,7 +23,18 @@ const readAllBooks = CatchAsync(async (_req, res) => {
     data: result,
   });
 });
-const readBookById = CatchAsync(() => {});
+
+const readBookById = CatchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await bookService.readBookById(id);
+
+  sendResponse(res, {
+    success: true,
+    status: 200,
+    message: "Book retrieved successfully",
+    data: result,
+  });
+});
 const updateBook = CatchAsync(() => {});
 const deleteBook = CatchAsync(() => {});
 
