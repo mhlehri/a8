@@ -6,6 +6,7 @@ const borrowABook = CatchAsync(async (req, res) => {
   const result = await borrowReturnService.borrowABook(req.body);
 
   const resultData: Record<string, any> = {};
+
   if (result) {
     for (const key in result) {
       if (Object.prototype.hasOwnProperty.call(result, key)) {
@@ -24,7 +25,15 @@ const borrowABook = CatchAsync(async (req, res) => {
     data: resultData,
   });
 });
-const returnABook = CatchAsync(async (req, res) => {});
+const returnABook = CatchAsync(async (req, res) => {
+  const result = await borrowReturnService.returnABook(req.body);
+
+  sendResponse(res, {
+    success: true,
+    status: 200,
+    message: "Book returned successfully",
+  });
+});
 
 export const borrowReturnController = {
   borrowABook,
