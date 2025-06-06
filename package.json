@@ -2,11 +2,11 @@
   "name": "assignment-8",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts",
-    "build": "tsc --outDir dist"
+    "prod": "NODE_ENV=production node ./dist/server.js",
+    "build": "tsc && npx prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -21,8 +21,8 @@
   "devDependencies": {
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.2",
-    "@types/node": "^22.15.30",
     "prisma": "^6.9.0",
+    "@types/node": "^22.15.30",
     "tsx": "^4.19.4"
   }
 }

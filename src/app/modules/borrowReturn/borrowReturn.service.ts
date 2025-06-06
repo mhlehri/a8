@@ -1,4 +1,4 @@
-import { BorrowRecord } from "../../../generated";
+import { BorrowRecord } from "@prisma/client";
 import AppError from "../../../helper/AppError";
 import prisma from "../../../shared/prisma";
 
