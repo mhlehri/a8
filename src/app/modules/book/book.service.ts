@@ -9,7 +9,12 @@ const createBook = async (data: Book) => {
 
   return r;
 };
-const readAllBooks = () => {};
+
+const readAllBooks = async () => {
+  const r = await prisma.book.findMany();
+
+  return r;
+};
 const readBookById = () => {};
 const updateBook = () => {};
 const deleteBook = () => {};
