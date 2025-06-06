@@ -1,15 +1,20 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
+import { PrismaClientKnownRequestError } from "../generated/prisma/runtime/library";
 
 const handleError = (
-  err: Error & { status?: number },
-  req: Request,
+  err: Error & PrismaClientKnownRequestError & { status?: number },
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ): void => {
-  res.status(err.status || 500).json({
+  const isDuplicate = err?.code === "P2002";
+  const code = isDuplicate ? 409 : err.status || 500;
+  res.status(code).json({
     success: false,
-    status: err.status || 500,
-    message: err.message || "Internal Server Error",
+    status: code,
+    message: isDuplicate
+      ? `${err.meta?.target} already exits`
+      : err.message || "Internal Server Error",
   });
 };
 
