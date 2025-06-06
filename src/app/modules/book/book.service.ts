@@ -15,9 +15,10 @@ const readAllBooks = async () => {
 
   return r;
 };
-const readBookById = () => {};
-const updateBook = () => {};
-const deleteBook = () => {};
+
+const readBookById = async () => {};
+const updateBook = async () => {};
+const deleteBook = async () => {};
 
 export const bookService = {
   createBook,
