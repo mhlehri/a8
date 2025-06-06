@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const zodBookSchema = z.object({
+export const zodBorrowReturnSchema = z.object({
   bookId: z.string(),
   memberId: z.string(),
 });

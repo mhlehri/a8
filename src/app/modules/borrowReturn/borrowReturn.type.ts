@@ -1,6 +1,8 @@
-export type TBook = {
-  name: String;
-  email: String;
-  phone: Number;
-  membershipDate: Date;
+export type TBorrow = {
+  bookId: String;
+  memberId: String;
+};
+
+export type TReturn = {
+  borrowId: string;
 };
