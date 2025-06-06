@@ -4,9 +4,9 @@ import { memberController } from "./member.controller";
 const memberRouter = Router();
 
 memberRouter.get("/", memberController.readAllMembers);
-memberRouter.get("/:id", memberController.readMemberById);
+memberRouter.get("/:memberId", memberController.readMemberById);
 memberRouter.post("/", memberController.createMember);
-memberRouter.patch("/", memberController.updateMember);
-memberRouter.delete("/", memberController.deleteMember);
+memberRouter.patch("/:memberId", memberController.updateMember);
+memberRouter.delete("/:memberId", memberController.deleteMember);
 
 export default memberRouter;
