@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output = "../src/generated"
 }
 
 datasource db {
@@ -33,11 +34,11 @@ model Member {
 }
 
 model BorrowRecord {
-  borrowId   String   @id @default(uuid())
-  borrowDate DateTime @default(now())
-  returnDate DateTime? 
+  borrowId   String    @id @default(uuid())
+  borrowDate DateTime  @default(now())
+  returnDate DateTime?
   bookId     String
   memberId   String
-  book       Book     @relation(fields: [bookId], references: [bookId])
-  member     Member   @relation(fields: [memberId], references: [memberId])
+  book       Book      @relation(fields: [bookId], references: [bookId])
+  member     Member    @relation(fields: [memberId], references: [memberId])
 }
