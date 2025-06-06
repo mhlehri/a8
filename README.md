@@ -52,8 +52,8 @@ _[Add your deployment URL here]_
 1. **Clone the repository**
 
    ```bash
-   git clone <repository-url>
-   cd assignment-8
+   git clone https://github.com/mhlehri/a8
+   cd a8
    ```
 
 2. **Install dependencies**
