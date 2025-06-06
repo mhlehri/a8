@@ -1,13 +1,7 @@
-const createBorrowReturn = () => {};
-const readAllBorrowReturns = () => {};
-const readBorrowReturnById = () => {};
-const updateBorrowReturn = () => {};
-const deleteBorrowReturn = () => {};
+const borrowABook = () => {};
+const returnABook = () => {};
 
 export const borrowReturnController = {
-  createBorrowReturn,
-  readAllBorrowReturns,
-  readBorrowReturnById,
-  updateBorrowReturn,
-  deleteBorrowReturn,
+  borrowABook,
+  returnABook,
 };
