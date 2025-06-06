@@ -1,11 +1,12 @@
 import { Router } from "express";
+import { bookController } from "./book.controller";
 
-const userRouter = Router();
+const bookRouter = Router();
 
-userRouter.get("/");
-userRouter.get("/:id");
-userRouter.post("/");
-userRouter.patch("/");
-userRouter.delete("/");
+bookRouter.get("/", bookController.readAllBooks);
+bookRouter.get("/:id", bookController.readBookById);
+bookRouter.post("/", bookController.createBook);
+bookRouter.patch("/", bookController.updateBook);
+bookRouter.delete("/", bookController.deleteBook);
 
-export default userRouter;
+export default bookRouter;
