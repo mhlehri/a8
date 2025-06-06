@@ -1,4 +1,4 @@
-import { Member } from "../../../generated/prisma";
+import { Member } from "@prisma/client";
 import AppError from "../../../helper/AppError";
 import prisma from "../../../shared/prisma";
 

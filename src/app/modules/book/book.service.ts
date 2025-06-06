@@ -1,4 +1,4 @@
-import { Book } from "../../../generated/prisma";
+import { Book } from "@prisma/client";
 import AppError from "../../../helper/AppError";
 import prisma from "../../../shared/prisma";
 
@@ -35,8 +35,7 @@ const readBookById = async (bookId: string) => {
 };
 
 // Update book information with validation
-const updateBook = async (bookId: string, data: Partial<Book>) => {
-
+const updateBook = async (bookId: string, data: Book) => {
   // Check if book exists before updating
   const isExits = await prisma.book.findUnique({
     where: {
