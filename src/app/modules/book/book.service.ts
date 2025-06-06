@@ -1,4 +1,5 @@
 import { Book } from "../../../generated/prisma";
+import AppError from "../../../helper/AppError";
 import prisma from "../../../shared/prisma";
 
 const createBook = async (data: Book) => {
@@ -37,7 +38,23 @@ const updateBook = async (bookId: string, data: Partial<Book>) => {
   return r;
 };
 
-const deleteBook = async () => {};
+const deleteBook = async (bookId: string) => {
+  const isExits = await prisma.book.findUnique({
+    where: {
+      bookId,
+    },
+  });
+  if (!isExits) {
+    throw new AppError(404, "Book doesn't exits");
+  }
+
+  const r = await prisma.book.delete({
+    where: {
+      bookId,
+    },
+  });
+  return r;
+};
 
 export const bookService = {
   createBook,
