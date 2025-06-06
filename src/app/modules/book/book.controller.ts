@@ -25,8 +25,8 @@ const readAllBooks = CatchAsync(async (_req, res) => {
 });
 
 const readBookById = CatchAsync(async (req, res) => {
-  const { id } = req.params;
-  const result = await bookService.readBookById(id);
+  const { bookId } = req.params;
+  const result = await bookService.readBookById(bookId);
 
   if (!result) {
     throw new AppError(404, "Book not found");
@@ -39,6 +39,7 @@ const readBookById = CatchAsync(async (req, res) => {
     data: result,
   });
 });
+
 const updateBook = CatchAsync(() => {});
 const deleteBook = CatchAsync(() => {});
 

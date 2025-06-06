@@ -19,7 +19,7 @@ const readAllBooks = async () => {
 const readBookById = async (bookId: string) => {
   const r = await prisma.book.findUnique({
     where: {
-      bookId: id,
+      bookId,
     },
   });
 
